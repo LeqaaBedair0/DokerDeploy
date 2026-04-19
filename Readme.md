@@ -17,7 +17,7 @@ graph TD
     Task
     Notify
     DB
-  end
+  end```
 
 ## Technologies Used
 Auth Service: Go (Gin), JWT, bcrypt
