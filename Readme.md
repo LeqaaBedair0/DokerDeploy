@@ -7,9 +7,9 @@ This project simulates a real-world production environment using Microservices, 
 ```mermaid
 graph TD
   Client[Client/Browser]
-  Client --> HTTP Auth [Auth Service Go]
-  Auth --> JWT| Task[Task Service Node.js]
-  Task --> Event / HTTP| Notify[Notify Service Go]
+  Client -->|HTTP| Auth[Auth Service Go]
+  Auth -->|JWT| Task[Task Service Node.js]
+  Task -->|Event / HTTP| Notify[Notify Service Go]
   Auth --> DB[(MySQL Database)]
   Task --> DB
   subgraph Docker Network
