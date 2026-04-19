@@ -1,0 +1,19 @@
+---
+- name: Install Docker dependencies
+  apt:
+    name: [apt-transport-https, ca-certificates, curl, software-properties-common]
+    update_cache: yes
+
+- name: Add Docker GPG key
+  apt_key:
+    url: https://download.docker.com/linux/ubuntu/gpg
+
+- name: Install Docker and Compose plugin
+  apt:
+    name: [docker-ce, docker-ce-cli, containerd.io, docker-compose-plugin]
+
+- name: Start Docker service
+  systemd:
+    name: docker
+    state: started
+    enabled: yes

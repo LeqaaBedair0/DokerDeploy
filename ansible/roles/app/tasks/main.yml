@@ -1,0 +1,20 @@
+---
+- name: Ensure app deployment directory exists
+  file:
+    path: /opt/mini-prod-platform
+    state: directory
+
+- name: Copy project files to server
+  copy:
+    src: /home/leqaa/mini-prod-platform/
+    dest: /opt/mini-prod-platform/
+
+- name: Generate .env file from Vault secrets
+  template:
+    src: env.j2
+    dest: /opt/mini-prod-platform/.env
+
+- name: Start containers via Docker Compose
+  command: docker compose up -d --build
+  args:
+    chdir: /opt/mini-prod-platform

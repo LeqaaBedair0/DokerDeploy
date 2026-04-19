@@ -1,0 +1,26 @@
+---
+- name: Ensure UFW is installed
+  apt:
+    name: ufw
+    state: present
+    update_cache: yes
+
+- name: Allow SSH
+  ufw:
+    rule: allow
+    port: '22'
+    proto: tcp
+
+- name: Allow Web Traffic (Auth & Tasks)
+  ufw:
+    rule: allow
+    port: "{{ item }}"
+    proto: tcp
+  loop:
+    - '8000'
+    - '3000'
+
+- name: Enable UFW
+  ufw:
+    state: enabled
+  

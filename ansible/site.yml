@@ -1,0 +1,9 @@
+---
+- hosts: app_servers
+  become: true
+  vars_files:
+    - group_vars/vault.yml
+  roles:
+    - docker
+    - firewall
+    - app

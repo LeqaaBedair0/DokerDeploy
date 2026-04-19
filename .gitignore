@@ -1,0 +1,14 @@
+# Secrets# Secrets
+.env
+ansible/group_vars/vault.yml
+
+# Dependencies
+node_modules/
+task-service/node_modules/
+
+# Database Data
+mysql-data/
+.env
+ansible/group_vars/vault.yml
+
+
